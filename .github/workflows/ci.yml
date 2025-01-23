@@ -1,0 +1,50 @@
+name: "CI"
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '**'
+  # workflow is reused by cd.yml
+  workflow_call:
+
+jobs:
+
+  Testing:
+    name: "PHP Checks"
+    strategy:
+      matrix:
+        php-version: ['8.2', '8.3', '8.4']
+        # Ubuntu Noble is not available for now, because of a curl arm64 bug:
+        # https://bugs.launchpad.net/ubuntu/+source/curl/+bug/2073448
+        os-variant: ['bookworm', 'jammy', 'alpine']
+        # temporarily disabled 8.4@alpine (lack of such image)
+        exclude:
+          - php-version: '8.4'
+            os-variant: 'alpine'
+      fail-fast: true
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Run tests
+      run: make test
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+    - 
+      name: Set up QEMU (multiplatform)
+      uses: docker/setup-qemu-action@v3
+    - 
+      name: Set up Docker Buildx (multiplatform)
+      uses: docker/setup-buildx-action@v3    
+    - name: Test building dist image
+      uses: docker/build-push-action@v5
+      with:
+        push: false
+        platforms: linux/amd64,linux/arm64,linux/arm/v7
+        target: dist
+        build-args: |
+          PHP_VERSION=${{ matrix.php-version}}
+          OS_VARIANT=${{ matrix.os-variant }}

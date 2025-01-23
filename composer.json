@@ -1,0 +1,34 @@
+{
+    "name": "kuick/example",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "require": {
+        "kuick/framework": "^2.0"
+    },
+    "require-dev": {
+        "kuick/qa-toolkit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\Unit\\App\\": "tests/Unit"
+        }
+    },
+    "scripts": {
+        "fix:phpcbf": "phpcbf --standard=PSR12 src tests",
+        "test:phpstan": "XDEBUG_MODE=off phpstan --level=9 --no-progress --memory-limit=512M analyse src tests/Unit",
+        "test:phpcs": "phpcs -n --standard=PSR12 src tests/Unit",
+        "test:phpmd": "phpmd src tests/Unit text cleancode,codesize,controversial,design,naming,unusedcode",
+        "test:phpunit": "XDEBUG_MODE=coverage phpunit",
+        "test:all": [
+            "@test:phpcs",
+            "@test:phpstan",
+            "@test:phpmd",
+            "@test:phpunit"
+        ]
+    }
+}
