@@ -8,21 +8,24 @@
  * @license    https://github.com/milejko/kuick-project?tab=MIT-1-ov-file#readme New BSD License
  */
 
-use App\UI\PingController;
 use Kuick\Framework\Api\UI\DocHtmlController;
 use Kuick\Framework\Api\UI\DocJsonController;
 use Kuick\Framework\Config\RouteConfig;
 use Kuick\Framework\Api\UI\OpsController;
 
 return [
-    // Homepage
+    // OPS route gives some insight of server environment
     new RouteConfig(
-        '/',
-        PingController::class
+        '/api/ops',
+        OpsController::class
     ),
-    // Ping route with named name parameter
+    // OpenAPI documentation
     new RouteConfig(
-        '/hello/(?<name>[a-zA-Z0-9-]+)',
-        PingController::class
+        '/api/doc.json',
+        DocJsonController::class
+    ),
+    new RouteConfig(
+        '/api/doc',
+        DocHtmlController::class
     ),
 ];
