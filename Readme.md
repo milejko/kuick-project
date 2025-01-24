@@ -25,7 +25,7 @@ Alternatively you can just clone this repository.
 ```
 make up
 ```
-Alternatively you can run the docker command yourself:
+Alternatively you can run the docker commands from the Makefile yourself:
 ```
 docker build --target=dev-server --tag=kuick-project .
 docker run --rm --name kuick-project -v ./:/var/www/html kuick-project composer install

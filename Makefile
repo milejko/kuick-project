@@ -25,8 +25,6 @@ build: version.txt
 # Local development environment targets #
 #########################################
 up: version.txt
-	docker build --target=dev-server --tag=$(IMAGE_NAME):$(shell cat version.txt) .
-	docker run --rm --name kuick-project -v ./:/var/www/html $(IMAGE_NAME):$(shell cat version.txt) composer install
-	docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 \
-		-e APP_ENV=dev \
-		$(IMAGE_NAME):$(shell cat version.txt)	
+	docker build --target=dev-server --tag=kuick-project .
+	docker run --rm --name kuick-project -v ./:/var/www/html kuick-project composer install
+	docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 -e APP_ENV=dev kuick-project
