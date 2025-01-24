@@ -9,30 +9,42 @@
 Kuick project is an example application based on [Kuick Framework](https://github.com/milejko/kuick-framework)
 
 ## Key features
-1. Logging realized with PSR-3 Logger Interface implementation
-2. Integrated PSR-7 HTTP message interface
-3. PSR-11 Container
-4. Implemented Event Dispatcher compatible with [PSR-14](https://github.com/milejko/kuick-event-dispatcher)
-4. Request handling compatible with [PSR-15](https://github.com/milejko/kuick-http)
-5. [PSR-16 Caching](https://github.com/milejko/kuick-cache)
+1. Ready to install package with sample controllers and commands
+2. Dockerfile with targets to test, run and deploy the application
 
 ## Basic usage
-Use composer to create this project
+1. With PHP and Composer run:
 ```
 composer create-project kuick/project
 ```
+Alternatively you can just clone this repository.
 
-## Usage (Docker)
-Ready to deploy images you can find here: https://hub.docker.com/r/kuickphp/kuick/tags
+2. Make sure to have Docker and Make installed
+
+3. Use make to start the dev server
+```
+make up
+```
+Alternatively you can run the docker command yourself:
+```
+docker build --target=dev-server --tag=kuick-project .
+docker run --rm --name kuick-project -v ./:/var/www/html kuick-project composer install
+docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 -e APP_ENV=dev kuick-project
+```
+
+4. Now you have a local dev server running on 8080 port
+The source code is directly mounted as a volume into the container, so changes are "live".
+
+## Docker Demo
+Ready to deploy images you can find on [Dockerhub](https://hub.docker.com/r/kuickphp/kuick/tags)
 
 1. Run using Docker
-This example utilizes the smallest, Alpine distribution.
 ```
-docker run -p 8080:80 kuickphp/kuick:alpine
+docker run -p 8080:80 kuickphp/kuick
 ```
 Now you can try it out by opening http://localhost:8080/<br>
 
-2. Examine sample routes:
+2. Examine those sample routes:
 - Homepage:
 ```
 curl http://localhost:8080/
@@ -60,7 +72,7 @@ docker run -p 8080:80 \
     -e KUICK_OPS_GUARD_TOKEN=secret-token \
     kuickphp/kuick:alpine
 ```
-OPS endpoint:
+With KUICK_OPS_GUARD_TOKEN defined, you can reach /api/ops endpoint:
 ```
 curl -H "Authorization: Bearer secret-token" http://localhost:8080/api/ops
 ```
