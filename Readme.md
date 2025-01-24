@@ -15,7 +15,7 @@ Kuick project is an example application based on [Kuick Framework](https://githu
 ## Basic usage
 1. With PHP and Composer run:
 ```
-composer create-project kuick/project
+composer create-project kuick/project .
 ```
 Alternatively you can just clone this repository.
 
