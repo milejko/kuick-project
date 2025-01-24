@@ -3,7 +3,7 @@
     "license": "MIT",
     "minimum-stability": "stable",
     "require": {
-        "kuick/framework": "^2.0"
+        "kuick/framework": "^2.1"
     },
     "require-dev": {
         "kuick/qa-toolkit": "^1.0"
@@ -29,6 +29,7 @@
             "@test:phpstan",
             "@test:phpmd",
             "@test:phpunit"
-        ]
+        ],
+        "start": "php -S 0.0.0.0:8080 public/index.php"
     }
 }
