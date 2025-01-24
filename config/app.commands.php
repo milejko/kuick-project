@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Kuick Framework (https://github.com/milejko/kuick-project)
+ * Kuick Project (https://github.com/milejko/kuick-project)
  *
  * @link       https://github.com/milejko/kuick-project
  * @copyright  Copyright (c) 2010-2025 Mariusz Miłejko (mariusz@milejko.pl)
@@ -11,5 +11,6 @@
 use App\Console\PingCommand;
 
 return [
+    // Sample command
     PingCommand::class,
 ];

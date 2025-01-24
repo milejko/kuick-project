@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Kuick Framework (https://github.com/milejko/kuick-project)
+ * Kuick Project (https://github.com/milejko/kuick-project)
  *
  * @link       https://github.com/milejko/kuick-project
  * @copyright  Copyright (c) 2010-2025 Mariusz Miłejko (mariusz@milejko.pl)
@@ -15,5 +15,8 @@ return [
     // OPS guard protects /api/ops route with OpsGuard 
     // the token can be defined via environment variable
     // @see config/di/app.di.php and config/di/app.di@dev.php
-    new GuardConfig('/api/ops', OpsGuard::class),
+    new GuardConfig(
+        '/api/ops',
+        OpsGuard::class
+    ),
 ];

@@ -4,7 +4,6 @@ namespace Tests\Kuick\Unit\Example\UI;
 
 use App\UI\PingController;
 use Nyholm\Psr7\ServerRequest;
-use Nyholm\Psr7Server\ServerRequestCreator;
 use PHPUnit\Framework\TestCase;
 
 /**

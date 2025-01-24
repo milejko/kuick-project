@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Kuick Framework (https://github.com/milejko/kuick-project)
+ * Kuick Project (https://github.com/milejko/kuick-project)
  *
  * @link       https://github.com/milejko/kuick-project
  * @copyright  Copyright (c) 2010-2025 Mariusz Miłejko (mariusz@milejko.pl)
@@ -11,12 +11,13 @@
 use function DI\env;
 
 return [
+    // some default values for Kuick Application
     'kuick.app.name'      => env('KUICK_APP_NAME', 'Kuick App'),
     'kuick.app.charset'   => env('KUICK_APP_CHARSET', 'UTF-8'),
     'kuick.app.locale'    => env('KUICK_APP_LOCALE', 'en_US.utf-8'),
     'kuick.app.timezone'  => env('KUICK_APP_TIMEZONE', 'UTC'),
 
-    // note that the default Kuick logger is "FingersCrossed + Stdout", so after WARNING is raised
+    // note that the default Kuick logger is "FingersCrossed + stdout", so after WARNING is raised
     // you will get all the logs from specified level and below
     'kuick.app.monolog.level' => env('KUICK_APP_MONOLOG_LEVEL', 'WARNING'),
 
