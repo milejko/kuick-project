@@ -2,20 +2,20 @@
 
 namespace Tests\Unit\App\Command;
 
-use App\Console\PingCommand;
+use App\Console\HelloCommand;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\ArgvInput;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 /**
- * @covers App\Console\PingCommand
+ * @covers App\Console\HelloCommand
  */
-class PingCommandTest extends TestCase
+class HelloCommandTest extends TestCase
 {
     public function testIfKuickSaysHello(): void
     {
 
-        $hello = new PingCommand('ping');
+        $hello = new HelloCommand('hello');
         $output = new BufferedOutput();
         $hello->run(new ArgvInput([
             './bin/console',

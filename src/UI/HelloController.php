@@ -13,17 +13,12 @@ namespace App\UI;
 use Kuick\Http\Message\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 
-class PingController
+class HelloController
 {
-    private const DEFAULT_NAME = 'my friend';
-
     public function __invoke(ServerRequestInterface $request): JsonResponse
     {
-        $name = $request->getQueryParams()['name'] ?? self::DEFAULT_NAME;
+        $name = $request->getQueryParams()['name'];
         $message = ['message' => 'Kuick says: hello ' . $name . '!'];
-        if (self::DEFAULT_NAME === $name) {
-            $message['hint'] = 'If you want a proper greeting use: /hello/Name';
-        }
         return new JsonResponse($message);
     }
 }

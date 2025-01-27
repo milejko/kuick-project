@@ -8,6 +8,7 @@
  * @license    https://github.com/milejko/kuick-project?tab=MIT-1-ov-file#readme New BSD License
  */
 
+use Kuick\EventDispatcher\EventDispatcher;
 use Kuick\Framework\Events\RequestReceivedEvent;
 use Kuick\Framework\Kernel;
 use Nyholm\Psr7\Factory\Psr17Factory;
@@ -29,4 +30,6 @@ $request = (new ServerRequestCreator(
     $psr17Factory, // StreamFactory
 ))->fromGlobals();
 
-(new Kernel($projectDir))->getEventDispatcher()->dispatch(new RequestReceivedEvent($request));
+(new Kernel($projectDir))->getContainer()
+    ->get(EventDispatcher::class)
+    ->dispatch(new RequestReceivedEvent($request));

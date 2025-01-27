@@ -17,9 +17,14 @@ return [
     'kuick.app.locale'    => env('KUICK_APP_LOCALE', 'en_US.utf-8'),
     'kuick.app.timezone'  => env('KUICK_APP_TIMEZONE', 'UTC'),
 
-    // note that the default Kuick logger is "FingersCrossed + stdout", so after WARNING is raised
-    // you will get all the logs from specified level and below
     'kuick.app.monolog.level' => env('KUICK_APP_MONOLOG_LEVEL', 'WARNING'),
+    // note that the first handler is "FingersCrossed", so after WARNING is raised
+    // you will get all the logs from specified level and below
+    'kuick.app.monolog.handlers' => [
+        ['type' => 'fingersCrossed'],
+        // remove the line above, and uncomment the line below to get a "standard" log to stdout
+        // ['type' => 'stream', 'path' => 'php://stdout'],
+    ],
 
     // there is no valid token by default, you should provide one through environment variables
     'kuick.ops.guard.token' => env('KUICK_OPS_GUARD_TOKEN', ''),

@@ -1,9 +1,9 @@
 {
     "name": "kuick/project",
     "license": "MIT",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
-        "kuick/framework": "^2.1"
+        "kuick/framework": "^2.2"
     },
     "require-dev": {
         "kuick/qa-toolkit": "^1.0"
@@ -17,6 +17,9 @@
         "psr-4": {
             "Tests\\Unit\\App\\": "tests/Unit"
         }
+    },
+    "config": {
+        "process-timeout": 0
     },
     "scripts": {
         "fix:phpcbf": "phpcbf --standard=PSR12 src tests",

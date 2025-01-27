@@ -8,13 +8,11 @@
  * @license    https://github.com/milejko/kuick-project?tab=MIT-1-ov-file#readme New BSD License
  */
 
-use Kuick\Framework\Middlewares\OptionsSendingMiddleware;
 use Kuick\Routing\RoutingMiddleware;
 use Kuick\Security\SecurityMiddleware;
 
+// middleware configuration
 return [
-    // default 204 for OPTIONS    
-    OptionsSendingMiddleware::class,
     // security middleware
     SecurityMiddleware::class,
     // routing middleware

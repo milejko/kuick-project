@@ -10,6 +10,7 @@ let myPhp = pkgs.php83.buildEnv {
         memory_limit=128M
         upload_max_filesize=256M
         post_max_size=256M
+        max_execution_time=3600
     '';
 };
 in pkgs.mkShell {
@@ -19,6 +20,7 @@ in pkgs.mkShell {
     ];
 
     shellHook = ''
+        export APP_ENV=dev
         composer up
         composer start
     '';

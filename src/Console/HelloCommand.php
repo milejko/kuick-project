@@ -16,8 +16,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-#[AsCommand(name: 'app:ping', description: 'Says hello')]
-class PingCommand extends Command
+#[AsCommand(name: 'app:hello', description: 'Says hello')]
+class HelloCommand extends Command
 {
     private const MESSAGE_TEMPLATE = 'Kuick says: Hello %s!';
     private const DEFAULT_NAME = 'my friend';
