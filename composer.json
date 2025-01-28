@@ -16,12 +16,6 @@
             "Tests\\Unit\\App\\": "tests/Unit"
         }
     },
-    "post-install-cmd": [
-        "kuick-installer"
-    ],
-    "post-create-project-cmd": [
-        "kuick-installer"
-    ],
     "scripts": {
         "fix:phpcbf": "phpcbf --standard=PSR12 src tests",
         "test:phpstan": "XDEBUG_MODE=off phpstan --level=9 --no-progress --memory-limit=512M analyse src tests/Unit",
