@@ -1,27 +1,19 @@
 <?php
 
-/**
- * Kuick Project (https://github.com/milejko/kuick-project)
- *
- * @link       https://github.com/milejko/kuick-project
- * @copyright  Copyright (c) 2010-2025 Mariusz Miłejko (mariusz@milejko.pl)
- * @license    https://github.com/milejko/kuick-project?tab=MIT-1-ov-file#readme New BSD License
- */
-
+use App\Security\SampleGuard;
 use Kuick\Framework\Config\GuardConfig;
 use Kuick\Http\Message\JsonResponse;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\ServerRequestInterface;
 
-// guard configuration
+// security configuration
 return [
-    // inline guard for /ping route
+    // sample guard for /ping route (covering GET method)
+    new GuardConfig('/ping', SampleGuard::class, ['GET']),
+    // an inline guard for /ping route (covering POST, PUT, PATCH, DELETE methods)
     new GuardConfig(
         '/ping',
-        function (ServerRequestInterface $request): ?ResponseInterface {
-            return $request->getHeaderLine('Authorization') ?
-                null :
-                new JsonResponse(['error' => 'Unauthorized'], JsonResponse::HTTP_UNAUTHORIZED);
-        }
+        function (): ?JsonResponse {
+            return new JsonResponse(['error' => 'Forbidden'], JsonResponse::HTTP_FORBIDDEN);
+        },
+        ['POST', 'PUT', 'PATCH', 'DELETE']
     ),
 ];

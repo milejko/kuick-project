@@ -1,7 +1,5 @@
 {
     "name": "kuick/project",
-    "license": "MIT",
-    "minimum-stability": "dev",
     "require": {
         "kuick/framework": "^2.2"
     },
@@ -18,9 +16,12 @@
             "Tests\\Unit\\App\\": "tests/Unit"
         }
     },
-    "config": {
-        "process-timeout": 0
-    },
+    "post-install-cmd": [
+        "kuick-installer"
+    ],
+    "post-create-project-cmd": [
+        "kuick-installer"
+    ],
     "scripts": {
         "fix:phpcbf": "phpcbf --standard=PSR12 src tests",
         "test:phpstan": "XDEBUG_MODE=off phpstan --level=9 --no-progress --memory-limit=512M analyse src tests/Unit",

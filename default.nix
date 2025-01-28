@@ -20,8 +20,8 @@ in pkgs.mkShell {
     ];
 
     shellHook = ''
-        export APP_ENV=dev
-        composer up
+        export COMPOSER_PROCESS_TIMEOUT=0
+        composer install
         composer start
     '';
 }

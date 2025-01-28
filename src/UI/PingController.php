@@ -5,12 +5,13 @@ namespace App\UI;
 use Kuick\Http\Message\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 
-class HelloController
+class PingController
 {
     public function __invoke(ServerRequestInterface $request): JsonResponse
     {
         return new JsonResponse([
-            'message' => 'Kuick says: hello ' . $request->getQueryParams()['name'] . '!'
+            'message' => 'pong',
+            'request-uri' => $request->getUri()->getPath(),
         ]);
     }
 }
