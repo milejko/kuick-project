@@ -28,8 +28,9 @@ build: version.txt
 #########################################
 up: version.txt
 	docker build --target=dev-server --tag=kuick-project .
-	docker run --rm --name kuick-project -v ./:/var/www/html kuick-project composer install
-	docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 -e APP_ENV=dev kuick-project
+	# prepare the environment
+	docker run --rm --name kuick-project -v ./:/var/www/html kuick-project sh -c "rm -rf ./var/cache && composer up"
+	docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 kuick-project
 
 nix: version.txt
 	nix-shell

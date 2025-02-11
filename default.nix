@@ -21,7 +21,8 @@ in pkgs.mkShell {
 
     shellHook = ''
         export COMPOSER_PROCESS_TIMEOUT=0
-        composer install
+        rm -rf ./var/cache
+        composer up
         composer start
     '';
 }

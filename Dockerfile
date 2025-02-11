@@ -22,8 +22,7 @@ COPY --link bin bin
 COPY --link config config
 COPY --link src src
 COPY --link public public
-COPY --link version.* public/
-COPY --link composer.* ./
+COPY --link composer.json composer.json
 
 RUN set -eux; \
     mkdir -m 777 var; \
@@ -40,12 +39,18 @@ RUN set -eux; \
 FROM base AS test-runner
 
 ENV XDEBUG_ENABLE=1 \
-    XDEBUG_MODE=coverage \
-    OPCACHE_VALIDATE_TIMESTAMPS=1
+    XDEBUG_MODE=coverage
 
 #####################
 # Dev server target #
 #####################
-FROM test-runner AS dev-server
+FROM base AS dev-server
+
+ENV APP_ENV=prod \
+    APP_LOG_LEVEL=warning \
+    APP_LOG_USEMICROSECONDS=1 \
+    XDEBUG_ENABLE=0 \
+    XDEBUG_MODE=develop \
+    OPCACHE_VALIDATE_TIMESTAMPS=0
 
 COPY ./etc/apache2 /etc/apache2

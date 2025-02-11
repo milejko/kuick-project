@@ -7,9 +7,9 @@
  * @license    https://github.com/milejko/kuick-framework?tab=MIT-1-ov-file#readme New BSD License
  */
 
-use Kuick\Framework\Config\ListenerConfig;
+//use Kuick\Framework\Config\ListenerConfig;
 
 // listener configuration
 return [
-    //new ListenerConfig('pattern', SomeListener::class),
+    //new ListenerConfig('event class name or class pattern', SomeListener::class),
 ];

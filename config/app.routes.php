@@ -7,13 +7,8 @@ use Kuick\Http\Message\JsonResponse;
 
 // routing configuration
 return [
-    // Homepage (inline route)
-    new RouteConfig(
-        '/',
-        function (): JsonResponse {
-            return new JsonResponse(['message' => 'Kuick says: hello world!']);
-        },
-    ),
+    // Hello homepage
+    new RouteConfig('/', HelloController::class),
     // Hello route with named name parameter
     new RouteConfig('/hello/(?<name>[a-zA-Z0-9-]+)', HelloController::class),
     // Ping route
