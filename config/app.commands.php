@@ -6,5 +6,5 @@ use Kuick\Framework\Config\CommandConfig;
 // command configuration
 return [
     // Sample command
-    new CommandConfig('hello', HelloCommand::class),
+    new CommandConfig('app:hello', HelloCommand::class, 'Says hello to you'),
 ];

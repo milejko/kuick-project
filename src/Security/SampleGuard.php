@@ -12,8 +12,11 @@ class SampleGuard
 {
     public function __invoke(ServerRequestInterface $request): ?JsonResponse
     {
-        return $request->getHeaderLine('Authorization') ?
-            null :
-            new JsonResponse(['error' => 'Unauthorized'], JsonResponse::HTTP_UNAUTHORIZED);
+        // if Authorization header is present, then the request is authorized
+        if ($request->getHeaderLine('Authorization')) {
+            return null;
+        }
+        // otherwise, return 401 Unauthorized
+        return new JsonResponse(['error' => 'Unauthorized'], JsonResponse::HTTP_UNAUTHORIZED);
     }
 }

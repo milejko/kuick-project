@@ -3,7 +3,6 @@
 use App\UI\HelloController;
 use App\UI\PingController;
 use Kuick\Framework\Config\RouteConfig;
-use Kuick\Http\Message\JsonResponse;
 
 // routing configuration
 return [
