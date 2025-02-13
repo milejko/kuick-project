@@ -1,10 +1,10 @@
 <?php
 
-use App\UI\HelloController;
+use App\UI\PingController;
 use Kuick\Framework\Config\RouteConfig;
 
 // routing configuration for dev environment only
 return [
-    // dev only page
-    new RouteConfig('/dev-only', HelloController::class),
+    // dev only ping page
+    new RouteConfig('/dev-only-ping', PingController::class),
 ];

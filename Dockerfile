@@ -25,7 +25,7 @@ COPY --link public public
 COPY --link composer.json composer.json
 
 RUN set -eux; \
-    mkdir -m 777 var; \
+    mkdir -pm 777 var/cache; \
     composer install \ 
         --prefer-dist \
         --classmap-authoritative \
