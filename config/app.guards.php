@@ -6,5 +6,5 @@ use Kuick\Framework\Config\GuardConfig;
 // security configuration
 return [
     // a sample guard for /ping (covering POST, PUT, PATCH, DELETE method)
-    new GuardConfig('/ping', SampleGuard::class, ['POST']),
+    new GuardConfig('/ping', SampleGuard::class, ['POST', 'PUT', 'PATCH', 'DELETE']),
 ];

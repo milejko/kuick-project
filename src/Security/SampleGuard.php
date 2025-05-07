@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use Kuick\Http\HttpException;
 use Kuick\Http\Message\JsonResponse;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -10,13 +11,12 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class SampleGuard
 {
-    public function __invoke(ServerRequestInterface $request): ?JsonResponse
+    public function __invoke(ServerRequestInterface $request): void
     {
         // if Authorization header is present, then the request is authorized
         if ($request->getHeaderLine('Authorization')) {
-            return null;
+            return;
         }
-        // otherwise, return 401 Unauthorized
-        return new JsonResponse(['error' => 'Unauthorized'], JsonResponse::HTTP_UNAUTHORIZED);
+        throw new HttpException(JsonResponse::HTTP_UNAUTHORIZED, 'Unauthorized request');
     }
 }

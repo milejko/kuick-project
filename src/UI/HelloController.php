@@ -10,8 +10,6 @@ class HelloController
     public function __invoke(ServerRequestInterface $request): JsonResponse
     {
         $name = $request->getQueryParams()['name'] ?? 'world';
-        return new JsonResponse([
-            'message' => 'Kuick says: hello ' . $name . '!'
-        ]);
+        return new JsonResponse(['message' => "Kuick says: hello $name!"]);
     }
 }
