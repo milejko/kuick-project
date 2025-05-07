@@ -1,7 +1,7 @@
 {
     "name": "kuick/project",
     "require": {
-        "kuick/framework": "^2.4"
+        "kuick/framework": "^2.5"
     },
     "require-dev": {
         "kuick/qa-toolkit": "^1.0"
