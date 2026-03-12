@@ -16,7 +16,7 @@ jobs:
     needs: Testing
     strategy:
       matrix:
-        os-variant: ['jammy', 'noble', 'alpine', 'bookworm', 'trixie']
+        os-variant: ['noble', 'alpine', 'trixie']
       fail-fast: false
     runs-on: ubuntu-latest
     steps:
