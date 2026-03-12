@@ -4,11 +4,10 @@ namespace Tests\Kuick\Unit\Example\UI;
 
 use App\UI\PingController;
 use Nyholm\Psr7\ServerRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers App\UI\PingController
- */
+#[CoversClass(PingController::class)]
 class PingControllerTest extends TestCase
 {
     public function testIfPingPongs(): void

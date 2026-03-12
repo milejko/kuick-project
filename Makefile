@@ -32,5 +32,3 @@ up: version.txt
 	docker run --rm --name kuick-project -v ./:/var/www/html kuick-project sh -c "rm -rf ./var/cache && composer up"
 	docker run --rm --name kuick-project -v ./:/var/www/html -p 8080:80 kuick-project
 
-nix: version.txt
-	nix-shell

@@ -45,9 +45,9 @@ jobs:
           type=raw,value=${{ matrix.os-variant }}
           type=semver,pattern={{major}},suffix=-${{ matrix.os-variant }}
           type=semver,pattern={{major}}.{{minor}},suffix=-${{ matrix.os-variant }}
-          type=semver,pattern={{major}},enable=${{ 'jammy' == matrix.os-variant }}
-          type=semver,pattern={{major}}.{{minor}},enable=${{ 'jammy' == matrix.os-variant }}
-          type=raw,value=latest,enable=${{ 'jammy' == matrix.os-variant }}
+          type=semver,pattern={{major}},enable=${{ 'noble' == matrix.os-variant }}
+          type=semver,pattern={{major}}.{{minor}},enable=${{ 'noble' == matrix.os-variant }}
+          type=raw,value=latest,enable=${{ 'noble' == matrix.os-variant }}
     - 
       name: Build & push to Docker Hub
       uses: docker/build-push-action@v5
@@ -58,5 +58,5 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }},
         labels: ${{ steps.meta.outputs.labels }},
         build-args: |
-          PHP_VERSION=8.4
+          PHP_VERSION=8.5
           OS_VARIANT=${{ matrix.os-variant }}

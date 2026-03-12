@@ -1,27 +1,25 @@
 <?php
 
-namespace Tests\Kuick\Unit\Example\UI;
+namespace Tests\Kuick\Unit\Security;
 
 use App\Security\SampleGuard;
 use Kuick\Http\HttpException;
-use Kuick\Http\Message\JsonResponse;
 use Nyholm\Psr7\ServerRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @covers App\Security\SampleGuard
- */
+#[CoversClass(SampleGuard::class)]
 class SampleGuardTest extends TestCase
 {
     public function testIfGuardPassesRequestsWithAuthorizationHeader(): void
     {
-        (new SampleGuard())(new ServerRequest('GET', '/ping', ['Authorization' => 'anything']));
-        $this->assertTrue(true); // No exception should be thrown
+        new SampleGuard()(new ServerRequest('GET', '/ping', ['Authorization' => 'anything']));
+        $this->expectNotToPerformAssertions(); // No exception should be thrown
     }
 
     public function testIfGuardBlocksUnauthorizedRequests(): void
     {
         $this->expectException(HttpException::class);
-        (new SampleGuard())(new ServerRequest('GET', '/ping'));
+        new SampleGuard()(new ServerRequest('GET', '/ping'));
     }
 }

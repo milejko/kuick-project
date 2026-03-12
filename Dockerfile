@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1.6
 
-ARG PHP_VERSION=8.4 \
+ARG PHP_VERSION=8.5 \
     SERVER_VARIANT=apache \
-    OS_VARIANT=jammy
+    OS_VARIANT=noble
 
 ###################
 # Base PHP target #

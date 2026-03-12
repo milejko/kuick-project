@@ -1,6 +1,6 @@
 # Kuick Project
 [![Latest Version](https://img.shields.io/github/release/milejko/kuick-project.svg?cacheSeconds=14400)](https://github.com/milejko/kuick-project-project/releases)
-[![PHP](https://img.shields.io/badge/PHP-8.2%20|%208.3%20|%208.4-blue?logo=php&cacheSeconds=3600)](https://www.php.net)
+[![PHP](https://img.shields.io/badge/PHP-8.3%20|%208.4%20|%208.5-blue?logo=php&cacheSeconds=3600)](https://www.php.net)
 [![Total Downloads](https://img.shields.io/packagist/dt/kuick/project.svg?cacheSeconds=14400)](https://packagist.org/packages/kuick/project)
 [![CI](https://github.com/milejko/kuick-project/actions/workflows/ci.yml/badge.svg)](https://github.com/milejko/kuick-project/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/milejko/kuick-project/graph/badge.svg?token=80QEBDHGPH)](https://codecov.io/gh/milejko/kuick-project)

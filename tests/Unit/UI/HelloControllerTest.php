@@ -4,11 +4,13 @@ namespace Tests\Kuick\Unit\Example\UI;
 
 use App\UI\HelloController;
 use Nyholm\Psr7\ServerRequest;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @covers App\UI\HelloController
  */
+#[CoversClass(HelloController::class)]
 class HelloControllerTest extends TestCase
 {
     public function testIfKuickSaysHelloToTheWorld(): void
