@@ -1,6 +1,3 @@
-######################
-# Default parameters #
-######################
 IMAGE_NAME := kuickphp/kuick
 .DEFAULT_GOAL := test
 .PHONY: * # ignore files named like targets
