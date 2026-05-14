@@ -13,7 +13,9 @@ FROM milejko/php:${PHP_VERSION}-${SERVER_VARIANT}-${OS_VARIANT} AS base
 FROM base AS dist
 
 ENV APP_NAME=Kuick@Docker \
-    OPCACHE_VALIDATE_TIMESTAMPS=0
+    OPCACHE_VALIDATE_TIMESTAMPS=0 \
+    # empty token by default, you should provide one through environment variables
+    API_SECURITY_OPS_GUARD_TOKEN=
 
 COPY --link etc/apache2 /etc/apache2
 COPY --link bin bin
@@ -47,6 +49,7 @@ FROM base AS dev-server
 ENV APP_ENV=dev \
     APP_LOG_LEVEL=debug \
     APP_LOG_USEMICROSECONDS=1 \
+    API_SECURITY_OPS_GUARD_TOKEN=let-me-in \
     XDEBUG_ENABLE=1 \
     XDEBUG_MODE=develop \
     OPCACHE_VALIDATE_TIMESTAMPS=1

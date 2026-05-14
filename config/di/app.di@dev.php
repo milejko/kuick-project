@@ -8,13 +8,6 @@
  * @license    https://github.com/milejko/kuick-framework?tab=MIT-1-ov-file#readme New BSD License
  */
 
-use function DI\env;
-
+// dev specific services & settings
 return [
-    //simple token for dev
-    'api.security.ops.guard.token' => env('API_SECURITY_OPS_GUARD_TOKEN', 'let-me-in'),
-
-    //debug for dev
-    'app.log.level' => env('APP_LOG_LEVEL', 'DEBUG'),
-    'app.log.usemicroseconds' => env('APP_LOG_USEMICROSECONDS', true),
 ];
